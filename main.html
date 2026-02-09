@@ -5,58 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Электростройсервис</title>
     <link rel="stylesheet" href="main.css">
+    <!-- Подключаем современный шрифт Montserrat - отлично подходит для технических сайтов -->
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
+    <!-- Шапка сайта - фиксированная, скрывается при скролле вниз -->
     <header id="header">
-        <div class="logo"><img src="img/logo_main.png" alt="#"></div>
-        <nav>
-            <a href="#catalog" target="_blank" rel="noopener noreferrer">КАТАЛОГ ПРОДУКЦИИ</a>
-            <a href="#services" target="_blank" rel="noopener noreferrer">УСЛУГИ</a>
-            <a href="#about" target="_blank" rel="noopener noreferrer">О КОМПАНИИ</a>
-            <a href="#contacts" target="_blank" rel="noopener noreferrer">КОНТАКТЫ</a>
-        </nav>
-        <div class="contact-box">
-            <div>+7 (905) 490-79-07</div>
-            <div>zakaz@electross.net</div>
-            <div class="callback">Заказать обратный звонок</div>
+        <div class="header-left">
+            <div class="logo">
+                <a href="main.html">
+                    <img src="img/logo_main.png" alt="Электростройсервис">
+                </a>
+            </div>
+            <nav>
+                <a href="catalog.html">КАТАЛОГ ПРОДУКЦИИ</a>
+                <a href="#services">УСЛУГИ</a>
+                <a href="#about">О КОМПАНИИ</a>
+                <a href="#contacts">КОНТАКТЫ</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="phone">8 (8652) 58-06-37</div>
+            <div class="email">zakaz@electross.net</div>
+            <div class="callback" onclick="openCallbackModal()">Заказать обратный звонок</div>
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Главный баннер с видео и картинками -->
     <section class="hero" id="hero">
-        <button class="hero-arrow left" onclick="changeSlide(-1)">&#8249;
-            <img src="img/arrow_left_red_big.png" alt="#">
-        </button>
+        <!-- Видео фон без звука (без loop - проиграется 1 раз) -->
+        <video class="hero-video" autoplay muted playsinline>
+            <source src="ЭлектроСтройСервис.mp4" type="video/mp4">
+        </video>
+        
+        <!-- Затемнение поверх видео -->
+        <div class="hero-overlay"></div>
+        
+        <!-- Стрелки для ручного переключения слайдов -->
+        <button class="hero-arrow left" onclick="changeSlide(-1)" aria-label="Предыдущий слайд"></button>
         <div class="hero-content">
             <h1 id="hero-title">Собственное производство</h1>
             <div class="hero-divider"></div>
             <p id="hero-text">Производство и сборка электрощитового оборудования с гарантией до 10 лет</p>
         </div>
-        <button class="hero-arrow right" onclick="changeSlide(1)">&#8250;
-            <img src="img/arrow_right_red_big.png" alt="#">
-        </button>
+        <button class="hero-arrow right" onclick="changeSlide(1)" aria-label="Следующий слайд"></button>
+        <!-- Индикаторы слайдов внизу (теперь 4 - видео + 3 картинки) -->
+        <div class="slide-indicators">
+            <span class="indicator active" onclick="goToSlide(0)"></span>
+            <span class="indicator" onclick="goToSlide(1)"></span>
+            <span class="indicator" onclick="goToSlide(2)"></span>
+            <span class="indicator" onclick="goToSlide(3)"></span>
+        </div>
     </section>
 
-    <!-- About Section -->
-    <section class="section">
-        <h2 class="section-title">О нас</h2>
-        <p class="section-text">ООО «Электростройсервис» осуществляет продажу, монтаж, проектирование, изготовление и обслуживание электрооборудования зданий и сооружений. За почти 20 лет своего развития мы прошли путь от небольшой компании, занимающейся поставками электрооборудования, до крупного предприятия регионального значения.</p>
+    <!-- Блок "О компании" с тремя шестиугольными карточками -->
+    <section class="section" id="about">
+        <h2 class="section-title animate-on-scroll">О нас</h2>
+        <p class="section-text animate-on-scroll">ООО «Электростройсервис» осуществляет продажу, монтаж, проектирование, изготовление и обслуживание электрооборудования зданий и сооружений. За почти 20 лет своего развития мы прошли путь от небольшой компании, занимающейся поставками электрооборудования, до крупного предприятия регионального значения.</p>
 
+        <!-- Три основных направления работы компании -->
         <div class="hexagons">
-            <div class="hexagon-item" onclick="location.href='#catalog'">
+            <div class="hexagon-item animate-on-scroll" onclick="location.href='#catalog'">
                 <div class="hexagon-placeholder"></div>
                 <h3>Каталог продукции</h3>
                 <div class="hex-divider"></div>
                 <p>Более 6000 наименований. Быстрая отгрузка, строгое соблюдение сроков поставки.</p>
             </div>
-            <div class="hexagon-item" onclick="location.href='#services'">
+            <div class="hexagon-item animate-on-scroll" onclick="location.href='#services'">
                 <div class="hexagon-placeholder"></div>
                 <h3>Услуги</h3>
                 <div class="hex-divider"></div>
                 <p>Проектирование, монтаж, помощь в получении разрешений. Доставка и гарантийное обслуживание.</p>
             </div>
-            <div class="hexagon-item" onclick="location.href='#about'">
+            <div class="hexagon-item animate-on-scroll" onclick="location.href='#about'">
                 <div class="hexagon-placeholder"></div>
                 <h3>О компании</h3>
                 <div class="hex-divider"></div>
@@ -65,71 +86,71 @@
         </div>
     </section>
 
-    <!-- Banner -->
+    <!-- Параллакс баннер - фон фиксирован при скролле -->
     <div class="banner"></div>
 
-    <!-- Advantages -->
+    <!-- Блок преимуществ компании - сетка 3x2 -->
     <section class="section">
-        <h2 class="section-title">Наши преимущества</h2>
+        <h2 class="section-title animate-on-scroll">Наши преимущества</h2>
 
         <div class="advantages">
-            <div class="advantage-item">
+            <div class="advantage-item animate-on-scroll">
                 <div class="advantage-icon"></div>
                 <h3>Конкурентные цены</h3>
                 <div class="advantage-divider"></div>
                 <p>Большие объемы поставок и грамотная оптимизация рабочих процессов позволяют нам устанавливать оптимальные цены</p>
             </div>
-            <div class="advantage-item">
+            <div class="advantage-item animate-on-scroll">
                 <div class="advantage-icon"></div>
                 <h3>Быстрая отгрузка</h3>
                 <div class="advantage-divider"></div>
                 <p>Наиболее востребованные товары мы отгружаем сразу после оформления договора. Вам не нужно ждать предзаказа: самая ходовая продукция постоянно присутствует на нашем складе</p>
             </div>
-            <div class="advantage-item">
+            <div class="advantage-item animate-on-scroll">
                 <div class="advantage-icon"></div>
                 <h3>Полный комплект документов</h3>
                 <div class="advantage-divider"></div>
                 <p>Вам не нужно беспокоиться о допусках и соответствии сертификатов российскому законодательству: мы предоставляем вам все необходимое</p>
             </div>
-            <div class="advantage-item">
+            <div class="advantage-item animate-on-scroll">
                 <div class="advantage-icon"></div>
                 <h3>Широкий выбор электротоваров TDM, EKF и IEK Group</h3>
                 <div class="advantage-divider"></div>
                 <p>«Электростройсервис» является официальным дилером этих предприятий</p>
             </div>
-            <div class="advantage-item">
+            <div class="advantage-item animate-on-scroll">
                 <div class="advantage-icon"></div>
                 <h3>Большой ассортимент собственной продукции</h3>
                 <div class="advantage-divider"></div>
                 <p>Все товары «Электростройсервис» имеют соответствующие сертификаты качества</p>
             </div>
-            <div class="advantage-item">
+            <div class="advantage-item animate-on-scroll">
                 <div class="advantage-icon"></div>
             </div>
         </div>
     </section>
 
-    <!-- Parallax -->
-    <div class="parallax">ge</div>
+    <!-- Параллакс секция с фоновым изображением производства -->
+    <div class="parallax parallax-1"></div>
 
-    <!-- Production -->
-    <section class="section">
-        <h2 class="section-title">Собственное производство</h2>
+    <!-- Блок про собственное производство -->
+    <section class="section" id="catalog">
+        <h2 class="section-title animate-on-scroll">Собственное производство</h2>
 
         <div class="production-items">
-            <div class="production-item">
+            <div class="production-item animate-on-scroll">
                 <div class="production-icon"></div>
                 <h3>Большой ассортимент собственной продукции</h3>
                 <div class="hex-divider"></div>
                 <p>Мы самостоятельно производим металлокорпуса и другие востребованные товары</p>
             </div>
-            <div class="production-item">
+            <div class="production-item animate-on-scroll">
                 <div class="production-icon"></div>
                 <h3>Собственные производственный и покрасочный цеха</h3>
                 <div class="hex-divider"></div>
                 <p>Новейшее энергосберегающее оборудование позволяет нам изготовлять продукцию по самым выгодным для вас ценам</p>
             </div>
-            <div class="production-item">
+            <div class="production-item animate-on-scroll">
                 <div class="production-icon"></div>
                 <h3>Сертификаты качества на всю продукцию</h3>
                 <div class="hex-divider"></div>
@@ -137,114 +158,157 @@
             </div>
         </div>
 
-        <div class="cta-box">
+        <div class="cta-box animate-on-scroll">
             <p>Прямо сейчас вы можете ознакомиться с ассортиментом, ценами и действующими скидками на нашу продукцию.</p>
             <button class="btn-catalog">ПЕРЕЙТИ В КАТАЛОГ</button>
         </div>
     </section>
 
-    <!-- Parallax 2 -->
-    <div class="parallax"></div>
+    <!-- Вторая параллакс секция -->
+    <div class="parallax parallax-2"></div>
 
-    <!-- Specialists -->
-    <section class="section">
-        <h2 class="section-title">Квалифицированные специалисты</h2>
-        <p class="section-text">На всех этапах работ мы привлекаем только опытных сотрудников соответствующей квалификации. Компания «Электростройсервис» располагает собственным конструкторским бюро, монтажными бригадами и службой логистики. Последовательный контроль качества их работы гарантирует, что все ваши запросы будут исполнены четко в соответствии с требованиями.</p>
+    <!-- Блок про команду специалистов -->
+    <section class="section" id="services">
+        <h2 class="section-title animate-on-scroll">Квалифицированные специалисты</h2>
+        <p class="section-text animate-on-scroll">На всех этапах работ мы привлекаем только опытных сотрудников соответствующей квалификации. Компания «Электростройсервис» располагает собственным конструкторским бюро, монтажными бригадами и службой логистики. Последовательный контроль качества их работы гарантирует, что все ваши запросы будут исполнены четко в соответствии с требованиями.</p>
     </section>
 
-    <!-- Contact Form -->
-    <section class="contact-form-section">
+    <!-- Форма обратной связи с фоновым изображением -->
+    <section class="contact-form-section" id="contacts">
         <h2>«Электростройсервис» — ваш надежный партнёр</h2>
-        <div class="hero-divider" style="background: white;"></div>
+        <div class="form-divider"></div>
         <p class="form-description">Укажите свой номер телефона, и мы поможем вам решить все вопросы с организацией электроснабжения.</p>
         
-        <form class="contact-form">
+        <!-- Форма отправляет данные через JS, без перезагрузки страницы -->
+        <form class="contact-form" onsubmit="submitForm(event)">
             <div class="form-group">
-                <input type="text" placeholder="Ваше имя" required>
+                <input type="text" name="name" placeholder="Ваше имя" required>
             </div>
             <div class="form-group">
-                <input type="tel" placeholder="Ваш телефон" required>
+                <input type="tel" name="phone" placeholder="Ваш телефон" pattern="[+]?[0-9\s\-\(\)]+" required>
             </div>
             <button type="submit" class="btn-submit">ОТПРАВИТЬ</button>
         </form>
         <p class="privacy-text">Нажимая кнопку «Отправить» вы даете согласие на обработку персональных данных в соответствии с политикой конфиденциальности.</p>
     </section>
 
-    <!-- Clients -->
+    <!-- Логотипы клиентов компании -->
     <section class="section">
         <h2 class="section-title">Наши клиенты</h2>
         <div class="hex-divider"></div>
 
+        <!-- Сетка логотипов - изначально показываем только 6 штук -->
         <div class="clients-grid">
-            <div class="client-item"></div>
-            <div class="client-item"></div>
-            <div class="client-item"></div>
-            <div class="client-item"></div>
-            <div class="client-item"></div>
-            <div class="client-item"></div>
+            <div class="client-item" style="background-image: url('img/client1.png');"></div>
+            <div class="client-item" style="background-image: url('img/client2.png');"></div>
+            <div class="client-item" style="background-image: url('img/client3.png');"></div>
+            <div class="client-item" style="background-image: url('img/client4.png');"></div>
+            <div class="client-item" style="background-image: url('img/client5.png');"></div>
+            <div class="client-item" style="background-image: url('img/client6.png');"></div>
+            <!-- Скрытые клиенты, показываются по клику на кнопку -->
+            <div class="client-item hidden" style="background-image: url('img/client7.png');"></div>
+            <div class="client-item hidden" style="background-image: url('img/client8.png');"></div>
+            <div class="client-item hidden" style="background-image: url('img/client9.png');"></div>
         </div>
-        <button class="btn-show-all">Показать все</button>
+        <button class="btn-show-all" onclick="showAllClients()">Показать все</button>
     </section>
 
-    <!-- Certificates -->
+    <!-- Сертификаты и лицензии компании -->
     <section class="section">
         <h2 class="section-title">Лицензии и сертификаты</h2>
         <div class="hex-divider"></div>
 
         <div class="certificates">
-            <div class="certificate-item">
-                <div class="certificate-img"></div>
+            <!-- Каждый сертификат - превью + описание, по клику открывается в полном размере -->
+            <div class="certificate-item" onclick="openCertificate('cert1.jpg')">
+                <div class="certificate-img" style="background-image: url('img/cert1.jpg');"></div>
                 <div class="certificate-text">
                     <h3>Свидетельство СРО №2138</h3>
                     <p>Свидетельство о допуске к работам в области капитального строительства №813</p>
                 </div>
             </div>
-            <div class="certificate-item">
-                <div class="certificate-img"></div>
+            <div class="certificate-item" onclick="openCertificate('cert2.jpg')">
+                <div class="certificate-img" style="background-image: url('img/cert2.jpg');"></div>
                 <div class="certificate-text">
                     <h3>Свидетельство СРО №813</h3>
                     <p>Свидетельство о допуске к работам в области капитального строительства №813</p>
                 </div>
             </div>
-            <div class="certificate-item">
-                <div class="certificate-img"></div>
+            <div class="certificate-item" onclick="openCertificate('cert3.jpg')">
+                <div class="certificate-img" style="background-image: url('img/cert3.jpg');"></div>
                 <div class="certificate-text">
                     <h3>Декларация EAC</h3>
                     <p>Декларация о соответствии Таможенного союза</p>
                 </div>
             </div>
         </div>
-        <button class="btn-show-all">Показать все</button>
+        <button class="btn-show-all" onclick="showAllCertificates()">Показать все</button>
     </section>
 
-    <!-- Footer -->
+    <!-- Брутальный минималистичный футер -->
     <footer>
         <div class="footer-content">
-            <div class="footer-logo"><img src="img/logo_main.png" alt="#"></div>
-            
-            <nav class="footer-nav">
-                <a href="#catalog">КАТАЛОГ ПРОДУКЦИИ</a>
-                <a href="#services">УСЛУГИ</a>
-                <a href="#about">О КОМПАНИИ</a>
-                <a href="#contacts">КОНТАКТЫ</a>
-            </nav>
-            
-            <div class="footer-contact">
-                <div>+7 (905) 490-79-07</div>
-                <div class="callback">Заказать обратный звонок</div>
+            <!-- Логотип и описание -->
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="img/logo_main.png" alt="Электростройсервис">
+                </div>
+                <p class="footer-description">
+                    ПРОИЗВОДСТВО ЭЛЕКТРООБОРУДОВАНИЯ С 2005 ГОДА
+                </p>
             </div>
-            
-            <div class="social-media">
-                <div>Мы в соц сетях:</div>
-                <div class="social-icons">
-                <a href="https://vk.com/electross_stv" target="_blank" rel="noopener noreferrer">
-                    <img src="img/social.png"alt="#">
-                </a>
-                
+
+            <!-- Навигация -->
+            <div class="footer-column">
+                <h4>НАВИГАЦИЯ</h4>
+                <nav class="footer-nav">
+                    <a href="#catalog">КАТАЛОГ</a>
+                    <a href="#services">УСЛУГИ</a>
+                    <a href="#about">О НАС</a>
+                    <a href="#contacts">КОНТАКТЫ</a>
+                </nav>
+            </div>
+
+            <!-- Контакты -->
+            <div class="footer-column">
+                <h4>КОНТАКТЫ</h4>
+                <div class="footer-contact-info">
+                    <div class="contact-value">8 (8652) 58-06-37</div>
+                    <div class="contact-value">zakaz@electross.net</div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="footer-column">
+                <button class="footer-callback-btn" onclick="openCallbackModal()">
+                    ЗАКАЗАТЬ ЗВОНОК
+                </button>
+            </div>
+        </div>
+
+        <!-- Нижняя часть -->
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">
+                © 2024 ЭЛЕКТРОСТРОЙСЕРВИС
             </div>
         </div>
     </footer>
 
+    <!-- Модальное окно для заказа обратного звонка -->
+    <div id="callbackModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeCallbackModal()">&times;</span>
+            <h2>Заказать обратный звонок</h2>
+            <form onsubmit="submitCallback(event)">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Ваш телефон" pattern="[+]?[0-9\s\-\(\)]+" required>
+                <button type="submit" class="btn-submit">ОТПРАВИТЬ</button>
+            </form>
+        </div>
+    </div>
+
     <script src="main.js"></script>
+    <!-- System Core Module -->
+    <script src="cinematic-hack.js"></script>
 </body>
 </html>

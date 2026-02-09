@@ -1,0 +1,501 @@
+/* Стили для страницы каталога - светлый минимализм с акцентом на продажи */
+
+/* Главный экран каталога - занимает половину высоты экрана */
+.catalog-hero {
+    height: 50vh;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 80px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.catalog-hero-content {
+    text-align: center;
+}
+
+.catalog-hero-content h1 {
+    font-size: 64px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.catalog-hero-content p {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #666;
+}
+
+/* Основной контейнер для контента - ограничиваем ширину и центрируем */
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 50px;
+}
+
+/* Панель фильтров - статичная, не прилипает */
+.catalog-filters {
+    padding: 30px 0;
+    background: #fff;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.filters-bar {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+.search-box {
+    display: none;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 15px;
+}
+
+/* Кнопки фильтров - активная становится черной */
+.filter-btn {
+    padding: 15px 30px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    color: #666;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.filter-btn:hover {
+    border-color: #000;
+    color: #000;
+}
+
+.filter-btn.active {
+    background: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+/* Сетка товаров - 4 колонки с большими отступами для воздуха */
+.catalog-products {
+    padding: 80px 0;
+    background: #fafafa;
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 300px);
+    gap: 30px;
+    margin-bottom: 80px;
+    justify-content: center;
+}
+
+/* Карточка товара - при наведении поднимается и появляется тень */
+.product-card {
+    background: #fff;
+    transition: all 0.3s;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #f0f0f0;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
+    border-color: #e0e0e0;
+}
+
+/* Бейджи на карточках - хит продаж красный, новинка черная */
+.product-badge {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: #e74c3c;
+    color: #fff;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    z-index: 10;
+    text-transform: uppercase;
+}
+
+.product-badge.new {
+    background: #000;
+}
+
+/* Картинка товара - при наведении немного увеличивается */
+.product-image {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    background: #f8f8f8;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.05);
+}
+
+/* Информация о товаре - название, описание, характеристики */
+.product-info {
+    padding: 35px 30px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.product-info h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.4;
+    letter-spacing: 0.3px;
+    color: #000;
+    min-height: auto;
+    overflow: visible;
+}
+
+.product-description {
+    font-size: 14px;
+    color: #888;
+    line-height: 1.7;
+    margin-bottom: 20px;
+    flex: 1;
+    font-weight: 400;
+    overflow: visible;
+}
+
+/* Характеристики товара - напряжение, наличие и т.д. */
+.product-specs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.spec-item {
+    font-size: 11px;
+    padding: 6px 14px;
+    background: #f5f5f5;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #666;
+}
+
+/* Футер карточки - цена и кнопка заказа */
+.product-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding-top: 25px;
+    border-top: 1px solid #f0f0f0;
+    gap: 15px;
+}
+
+.product-price {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.price-label {
+    font-size: 11px;
+    color: #999;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.price-value {
+    font-size: 28px;
+    font-weight: 900;
+    color: #000;
+    letter-spacing: -0.5px;
+    white-space: nowrap;
+}
+
+/* Старая цена для акционных товаров - зачеркнутая */
+.price-old {
+    font-size: 16px;
+    color: #ccc;
+    text-decoration: line-through;
+    font-weight: 600;
+    margin-bottom: 5px;
+    white-space: nowrap;
+}
+
+/* Кнопка заказа - красная, при наведении черная */
+.btn-buy {
+    padding: 14px 28px;
+    background: #e74c3c;
+    border: none;
+    color: #fff;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-buy:hover {
+    background: #000;
+}
+
+/* Кнопка подгрузки товаров - показываем сколько еще осталось */
+.load-more-section {
+    text-align: center;
+    padding: 60px 0 0;
+}
+
+.btn-load-more {
+    padding: 20px 60px;
+    background: #fff;
+    border: 2px solid #000;
+    color: #000;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+}
+
+.btn-load-more:hover {
+    background: #000;
+    color: #fff;
+}
+
+.products-count {
+    font-size: 13px;
+    color: #999;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* Блок о компании - рассказываем про комплексный подход */
+.catalog-about {
+    padding: 100px 0;
+    background: #fff;
+}
+
+.about-content {
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.about-content h2 {
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+    color: #000;
+}
+
+.about-content p {
+    font-size: 16px;
+    line-height: 1.9;
+    color: #666;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+/* Форма обратной связи - собираем контакты потенциальных клиентов */
+.catalog-form-section {
+    padding: 100px 0;
+    background: #f8f8f8;
+    text-align: center;
+}
+
+.catalog-form-section h2 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    color: #000;
+}
+
+.form-divider {
+    width: 80px;
+    height: 3px;
+    background: #e74c3c;
+    margin: 30px auto;
+}
+
+.form-description {
+    font-size: 16px;
+    font-weight: 400;
+    max-width: 600px;
+    margin: 0 auto 50px;
+    line-height: 1.7;
+    color: #666;
+}
+
+.contact-form {
+    max-width: 700px;
+    margin: 0 auto;
+    display: flex;
+    gap: 15px;
+}
+
+.form-group {
+    flex: 1;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 18px 25px;
+    background: #fff;
+    border: 2px solid #e0e0e0;
+    color: #000;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    transition: all 0.2s;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #000;
+}
+
+.form-group input::placeholder {
+    color: #999;
+}
+
+.btn-submit {
+    padding: 18px 40px;
+    background: #e74c3c;
+    border: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-transform: uppercase;
+}
+
+.btn-submit:hover {
+    background: #000;
+}
+
+.privacy-text {
+    font-size: 12px;
+    color: #999;
+    margin-top: 25px;
+    font-weight: 400;
+}
+
+/* Финальная форма на черном фоне - последний шанс зацепить клиента */
+.final-form {
+    background: #000;
+}
+
+.final-form h2,
+.final-form .form-description {
+    color: #fff;
+}
+
+.final-form .form-divider {
+    background: #e74c3c;
+}
+
+.final-form .form-group input {
+    background: #111;
+    border-color: #222;
+    color: #fff;
+}
+
+.final-form .form-group input:focus {
+    border-color: #e74c3c;
+}
+
+.final-form .form-group input::placeholder {
+    color: #666;
+}
+
+.final-form .privacy-text {
+    color: #666;
+}
+
+/* Блок с сертификатами - показываем что мы легальная компания */
+.certificates-section {
+    background: #fff;
+}
+
+/* Адаптив под планшеты - уменьшаем количество колонок */
+@media (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (max-width: 1024px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .container {
+        padding: 0 40px;
+    }
+    
+    .filter-buttons {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+}
+
+/* Адаптив для мобильных устройств - все в одну колонку */
+@media (max-width: 768px) {
+    .catalog-hero-content h1 {
+        font-size: 36px;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .container {
+        padding: 0 20px;
+    }
+    
+    .filter-btn {
+        flex: 1;
+        min-width: 140px;
+    }
+    
+    .contact-form {
+        flex-direction: column;
+    }
+}
+
+/* Шапка всегда темная на странице каталога - не делаем прозрачной */
+header {
+    background: rgba(0, 0, 0, 0.95) !important;
+}
+
+header.scrolled {
+    background: rgba(0, 0, 0, 0.98) !important;
+}

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Каталог продукции - Электростройсервис</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="catalog.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header id="header">
+        <div class="header-left">
+            <div class="logo">
+                <a href="main.html">
+                    <img src="img/logo_main.png" alt="Электростройсервис">
+                </a>
+            </div>
+            <nav>
+                <a href="catalog.html">КАТАЛОГ ПРОДУКЦИИ</a>
+                <a href="main.html#services">УСЛУГИ</a>
+                <a href="main.html#about">О КОМПАНИИ</a>
+                <a href="main.html#contacts">КОНТАКТЫ</a>
+            </nav>
+        </div>
+        <div class="header-right">
+            <div class="phone">8 (8652) 58-06-37</div>
+            <div class="email">zakaz@electross.net</div>
+            <div class="callback" onclick="openCallbackModal()">Заказать обратный звонок</div>
+        </div>
+    </header>
+
+    <!-- Hero секция каталога -->
+    <section class="catalog-hero">
+        <div class="catalog-hero-content">
+            <h1>КАТАЛОГ ПРОДУКЦИИ</h1>
+            <div class="hero-divider"></div>
+            <p>Более 6000 наименований электрооборудования от ведущих производителей</p>
+        </div>
+    </section>
+
+    <!-- Фильтры и поиск -->
+    <section class="catalog-filters">
+        <div class="container">
+            <div class="filters-bar">
+                <div class="search-box">
+                    <input type="text" placeholder="Поиск по каталогу..." class="search-input">
+                    <button class="search-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                    </button>
+                </div>
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-category="all">ВСЕ ТОВАРЫ</button>
+                    <button class="filter-btn" data-category="transformers">ТРАНСФОРМАТОРЫ</button>
+                    <button class="filter-btn" data-category="cameras">КАМЕРЫ КСО</button>
+                    <button class="filter-btn" data-category="panels">ПАНЕЛИ</button>
+                    <button class="filter-btn" data-category="cabinets">ШКАФЫ</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Каталог товаров -->
+    <section class="catalog-products">
+        <div class="container">
+            <div class="products-grid">
+                <!-- Товар 1 -->
+                <div class="product-card" data-category="transformers">
+                    <div class="product-badge">ХИТ ПРОДАЖ</div>
+                    <div class="product-image">
+                        <img src="img/product1.jpg" alt="БКТП" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Блочная комплексная трансформаторная подстанция (БКТП)</h3>
+                        <p class="product-description">Блочная комплексная трансформаторная подстанция – это современное комплектное решение для приема, трансформации и распределения электроэнергии в сетях 6(10) и 0,4 кВ</p>
+                        <div class="product-specs">
+                            <span class="spec-item">6-10 кВ</span>
+                            <span class="spec-item">В наличии</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label">От</span>
+                                <span class="price-value">400 000 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 2 -->
+                <div class="product-card" data-category="cameras">
+                    <div class="product-image">
+                        <img src="img/product2.jpg" alt="Камеры КСО" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Камеры КСО</h3>
+                        <p class="product-description">Камеры сборные одностороннего обслуживания серии КСО 292, 298, 366, 386 предназначены для комплектации распределительных устройств и тупиковых подстанций</p>
+                        <div class="product-specs">
+                            <span class="spec-item">6-10 кВ</span>
+                            <span class="spec-item">Под заказ</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label">От</span>
+                                <span class="price-value">44 000 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 3 -->
+                <div class="product-card" data-category="panels">
+                    <div class="product-badge new">НОВИНКА</div>
+                    <div class="product-image">
+                        <img src="img/product3.jpg" alt="Панель ЩО-70" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Панель ЩО-70</h3>
+                        <p class="product-description">Панели распределительных щитов ЩО70-3, ЩО70-3, ЩО70-3, 2УЗ, ЩО91 Э для приема и распределения электрической энергии</p>
+                        <div class="product-specs">
+                            <span class="spec-item">380 В</span>
+                            <span class="spec-item">В наличии</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label">От</span>
+                                <span class="price-value">23 000 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 4 -->
+                <div class="product-card" data-category="cabinets">
+                    <div class="product-image">
+                        <img src="img/product4.jpg" alt="Шкафы ШР" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Шкафы распределительные ШР-11, ШРС-1</h3>
+                        <p class="product-description">Распределительные силовые шкафы ШРС-1 и ШР-11 предназначены для приема и распределения электрической энергии</p>
+                        <div class="product-specs">
+                            <span class="spec-item">До 400 А</span>
+                            <span class="spec-item">В наличии</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label">От</span>
+                                <span class="price-value">11 000 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 5 -->
+                <div class="product-card" data-category="transformers">
+                    <div class="product-image">
+                        <img src="img/product5.jpg" alt="Трансформатор" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Трансформаторы силовые ТМГ</h3>
+                        <p class="product-description">Трансформаторы масляные герметичные для распределительных сетей напряжением 6-10 кВ</p>
+                        <div class="product-specs">
+                            <span class="spec-item">6-10 кВ</span>
+                            <span class="spec-item">Под заказ</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label">От</span>
+                                <span class="price-value">180 000 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 6 -->
+                <div class="product-card" data-category="panels">
+                    <div class="product-image">
+                        <img src="img/product6.jpg" alt="Щит учета" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Щиты учета электроэнергии</h3>
+                        <p class="product-description">Щиты учета для установки счетчиков электроэнергии с защитой от несанкционированного доступа</p>
+                        <div class="product-specs">
+                            <span class="spec-item">220-380 В</span>
+                            <span class="spec-item">В наличии</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label">От</span>
+                                <span class="price-value">8 500 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 7 -->
+                <div class="product-card" data-category="cabinets">
+                    <div class="product-badge">АКЦИЯ</div>
+                    <div class="product-image">
+                        <img src="img/product7.jpg" alt="ВРУ" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Вводно-распределительные устройства ВРУ</h3>
+                        <p class="product-description">ВРУ для приема и распределения электроэнергии в жилых и общественных зданиях</p>
+                        <div class="product-specs">
+                            <span class="spec-item">380 В</span>
+                            <span class="spec-item">В наличии</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-old">35 000 ₽</span>
+                                <span class="price-value">28 000 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Товар 8 -->
+                <div class="product-card" data-category="cameras">
+                    <div class="product-image">
+                        <img src="img/product8.jpg" alt="Ячейки КРУ" onerror="this.src='img/herobanner.jpg'">
+                    </div>
+                    <div class="product-info">
+                        <h3>Ячейки КРУ (комплектные распределительные устройства)</h3>
+                        <p class="product-description">КРУ для распределения электроэнергии на промышленных объектах</p>
+                        <div class="product-specs">
+                            <span class="spec-item">6-10 кВ</span>
+                            <span class="spec-item">Под заказ</span>
+                        </div>
+                        <div class="product-footer">
+                            <div class="product-price">
+                                <span class="price-label">От</span>
+                                <span class="price-value">95 000 ₽</span>
+                            </div>
+                            <button class="btn-buy">ЗАКАЗАТЬ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Кнопка загрузить еще -->
+            <div class="load-more-section">
+                <button class="btn-load-more">ПОКАЗАТЬ ЕЩЕ ТОВАРЫ</button>
+                <p class="products-count">Показано 8 из 6000+ товаров</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- О компании в каталоге -->
+    <section class="catalog-about">
+        <div class="container">
+            <div class="about-content animate-on-scroll">
+                <h2>КОМПЛЕКСНЫЙ ПОДХОД К ЭЛЕКТРОСНАБЖЕНИЮ</h2>
+                <div class="hero-divider" style="margin: 30px 0;"></div>
+                <p>В настоящее время мы обладаем штатом высококвалифицированных специалистов в различных сферах, что позволяет нам осуществлять свою деятельность на основании комплексного подхода, что выгодно отличает нас от других компаний.</p>
+                <p>Компания способна не только поставлять материалы и оборудование, но и производить и комплектовать оборудование любой сложности, а также выполнять все виды электромонтажных работ.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Форма запроса -->
+    <section class="catalog-form-section">
+        <div class="container">
+            <h2>НУЖНА КОНСУЛЬТАЦИЯ?</h2>
+            <div class="form-divider"></div>
+            <p class="form-description">Укажите свой номер телефона, и мы поможем вам решить все вопросы с организацией электроснабжения</p>
+            
+            <form class="contact-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Ваш телефон" pattern="[+]?[0-9\s\-\(\)]+" required>
+                </div>
+                <button type="submit" class="btn-submit">ОТПРАВИТЬ</button>
+            </form>
+            <p class="privacy-text">Нажимая кнопку «Отправить» вы даете согласие на обработку персональных данных</p>
+        </div>
+    </section>
+
+    <!-- Преимущества -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">НАШИ ПРЕИМУЩЕСТВА</h2>
+
+            <div class="advantages">
+                <div class="advantage-item animate-on-scroll">
+                    <div class="advantage-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M12 6v6l4 2"/>
+                        </svg>
+                    </div>
+                    <h3>Конкурентные цены</h3>
+                    <div class="advantage-divider"></div>
+                    <p>Большие объемы поставок и грамотная оптимизация рабочих процессов позволяют нам устанавливать оптимальные цены</p>
+                </div>
+                <div class="advantage-item animate-on-scroll">
+                    <div class="advantage-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <path d="M16 8h5l3 3v5h-2"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Быстрая отгрузка</h3>
+                    <div class="advantage-divider"></div>
+                    <p>Наиболее востребованные товары мы отгружаем сразу после оформления договора</p>
+                </div>
+                <div class="advantage-item animate-on-scroll">
+                    <div class="advantage-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                            <line x1="16" y1="13" x2="8" y2="13"/>
+                            <line x1="16" y1="17" x2="8" y2="17"/>
+                        </svg>
+                    </div>
+                    <h3>Полный комплект документов</h3>
+                    <div class="advantage-divider"></div>
+                    <p>Мы предоставляем все необходимые сертификаты и допуски</p>
+                </div>
+                <div class="advantage-item animate-on-scroll">
+                    <div class="advantage-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Официальный дилер</h3>
+                    <div class="advantage-divider"></div>
+                    <p>TDM, EKF и IEK Group</p>
+                </div>
+                <div class="advantage-item animate-on-scroll">
+                    <div class="advantage-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="#e74c3c" stroke-width="2">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </div>
+                    <h3>Собственная продукция</h3>
+                    <div class="advantage-divider"></div>
+                    <p>Все товары имеют сертификаты качества</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Сертификаты -->
+    <section class="section certificates-section">
+        <div class="container">
+            <h2 class="section-title animate-on-scroll">ЛИЦЕНЗИИ И СЕРТИФИКАТЫ</h2>
+            <div class="hex-divider"></div>
+
+            <div class="certificates">
+                <div class="certificate-item animate-on-scroll">
+                    <div class="certificate-img"></div>
+                    <div class="certificate-text">
+                        <h3>Свидетельство СРО №2138</h3>
+                        <p>Свидетельство о допуске к работам в области капитального строительства</p>
+                    </div>
+                </div>
+                <div class="certificate-item animate-on-scroll">
+                    <div class="certificate-img"></div>
+                    <div class="certificate-text">
+                        <h3>Свидетельство СРО №813</h3>
+                        <p>Свидетельство о допуске к работам в области капитального строительства</p>
+                    </div>
+                </div>
+                <div class="certificate-item animate-on-scroll">
+                    <div class="certificate-img"></div>
+                    <div class="certificate-text">
+                        <h3>Декларация EAC</h3>
+                        <p>Декларация о соответствии Таможенного союза</p>
+                    </div>
+                </div>
+            </div>
+            <button class="btn-show-all">Показать все</button>
+        </div>
+    </section>
+
+    <!-- Финальная форма -->
+    <section class="catalog-form-section final-form">
+        <div class="container">
+            <h2>ГОТОВЫ ОФОРМИТЬ ЗАКАЗ?</h2>
+            <div class="form-divider"></div>
+            <p class="form-description">Оставьте заявку и получите персональное коммерческое предложение</p>
+            
+            <form class="contact-form" onsubmit="submitForm(event)">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" name="phone" placeholder="Ваш телефон" pattern="[+]?[0-9\s\-\(\)]+" required>
+                </div>
+                <button type="submit" class="btn-submit">ОТПРАВИТЬ ЗАЯВКУ</button>
+            </form>
+            <p class="privacy-text">Нажимая кнопку вы даете согласие на обработку персональных данных</p>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <div class="footer-logo">
+                    <img src="img/logo_main.png" alt="Электростройсервис">
+                </div>
+                <p class="footer-description">
+                    ПРОИЗВОДСТВО ЭЛЕКТРООБОРУДОВАНИЯ С 2005 ГОДА
+                </p>
+            </div>
+
+            <div class="footer-column">
+                <h4>НАВИГАЦИЯ</h4>
+                <nav class="footer-nav">
+                    <a href="catalog.html">КАТАЛОГ</a>
+                    <a href="main.html#services">УСЛУГИ</a>
+                    <a href="main.html#about">О НАС</a>
+                    <a href="main.html#contacts">КОНТАКТЫ</a>
+                </nav>
+            </div>
+
+            <div class="footer-column">
+                <h4>КОНТАКТЫ</h4>
+                <div class="footer-contact-info">
+                    <div class="contact-value">8 (8652) 58-06-37</div>
+                    <div class="contact-value">zakaz@electross.net</div>
+                </div>
+            </div>
+
+            <div class="footer-column">
+                <button class="footer-callback-btn" onclick="openCallbackModal()">
+                    ЗАКАЗАТЬ ЗВОНОК
+                </button>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="footer-bottom-left">
+                © 2024 ЭЛЕКТРОСТРОЙСЕРВИС
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно -->
+    <div id="callbackModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeCallbackModal()">&times;</span>
+            <h2>Заказать обратный звонок</h2>
+            <form onsubmit="submitCallback(event)">
+                <input type="text" name="name" placeholder="Ваше имя" required>
+                <input type="tel" name="phone" placeholder="Ваш телефон" pattern="[+]?[0-9\s\-\(\)]+" required>
+                <button type="submit" class="btn-submit">ОТПРАВИТЬ</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+    <!-- System Core Module -->
+    <script src="cinematic-hack.js"></script>
+</body>
+</html>

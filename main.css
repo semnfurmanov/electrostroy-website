@@ -1,3 +1,4 @@
+/* Сброс стилей браузера */
 * {
     margin: 0;
     padding: 0;
@@ -5,74 +6,193 @@
 }
 
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Montserrat', sans-serif;
     color: #333;
     line-height: 1.6;
+    overflow-x: hidden;
 }
 
-/* Header */
+/* Плавная прокрутка по всему сайту */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Дополнительная плавность для webkit браузеров */
+html, body {
+    scroll-padding-top: 80px; /* отступ сверху при скролле к якорям (высота шапки) */
+}
+
+/* Плавный скролл для всех элементов */
+* {
+    scroll-behavior: smooth;
+}
+
+/* Шапка сайта - изначально прозрачная, при скролле становится матовой */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    padding: 15px 50px;
+    background: transparent;
+    padding: 18px 70px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     z-index: 1000;
-    transition: transform 0.3s ease;
+    transition: all 0.3s ease;
+    border-bottom: 1px solid transparent;
+}
+
+/* При скролле шапка становится матовой с размытием */
+header.scrolled {
+    background: rgba(20, 20, 20, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 header.hidden {
     transform: translateY(-100%);
 }
 
-.logo {
-    width: 150px;
-    height: 50px;
-    margin-right: 30px;
-    margin-bottom: auto;
-}
-
-nav {
+/* Левая часть шапки - логотип + навигация */
+.header-left {
     display: flex;
     align-items: center;
-    gap: 30px;
+    gap: 60px;
     flex: 1;
 }
 
+.logo {
+    width: 60px;
+    height: 60px;
+    flex-shrink: 0;
+}
+
+.logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+/* Навигация в шапке */
+nav {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
 nav a {
-    color: white;
+    color: rgba(255, 255, 255, 0.95);
     text-decoration: none;
-    font-size: 14px;
-    transition: color 0.3s;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 1.5px;
+    transition: color 0.3s, opacity 0.3s;
+    text-transform: uppercase;
+    white-space: nowrap;
+    position: relative;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #e74c3c;
+    transition: width 0.3s;
 }
 
 nav a:hover {
-    color: #e74c3c;
-}
-
-.contact-box {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 10px 20px;
     color: white;
-    font-size: 12px;
 }
 
-.contact-box div {
-    margin: 5px 0;
+nav a:hover::after {
+    width: 100%;
 }
 
+/* Правая часть шапки - контакты */
+.header-right {
+    text-align: right;
+    color: white;
+    line-height: 1.8;
+}
+
+.header-right .phone {
+    font-weight: 600;
+    font-size: 22px;
+    letter-spacing: 0.5px;
+    color: white;
+    margin-bottom: 3px;
+}
+
+.header-right .email {
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.5px;
+    margin-bottom: 5px;
+    font-weight: 400;
+}
+
+/* Кнопка обратного звонка - красная, подчеркнутая */
 .callback {
     color: #e74c3c;
     cursor: pointer;
     text-decoration: underline;
+    transition: color 0.3s, text-decoration-color 0.3s;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    margin-top: 3px;
+    font-weight: 500;
 }
 
-/* Hero Section */
+.callback:hover {
+    color: #ff5544;
+    text-decoration-color: #ff5544;
+}
 
+/* Главный баннер на всю высоту экрана с видео и картинками */
+.hero {
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    transition: background-image 0.5s ease-in-out;
+}
+
+/* Видео фон - покрывает всю секцию */
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    object-fit: cover;
+    transition: opacity 0.5s;
+}
+
+/* Затемнение поверх видео/картинки для читаемости текста */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Анимации появления/исчезновения текста при смене слайдов */
 .fade-out {
     animation: fadeOut 0.3s ease-out forwards;
 }
@@ -91,89 +211,164 @@ nav a:hover {
     to { opacity: 1; transform: translateY(0); }
 }
 
-.hero {
-    height: 100vh;
-    background: url('hero-bg.jpg') center/cover;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
+/* Контент баннера - текст справа, фиксированная позиция */
 .hero-content {
-    text-align: center;
+    position: absolute;
+    right: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-align: left;
     color: white;
     z-index: 2;
+    width: 550px;
+    min-height: 250px;
 }
 
 .hero-content h1 {
-    font-size: 48px;
-    margin-bottom: 20px;
+    font-size: 56px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    letter-spacing: 1px;
+    min-height: 135px;
+    display: flex;
+    align-items: center;
 }
 
+/* Белая линия под заголовком */
 .hero-divider {
-    width: 100px;
-    height: 3px;
-    background: #e74c3c;
-    margin: 20px auto;
+    width: 120px;
+    height: 2px;
+    background: white;
+    margin: 30px 0;
 }
 
 .hero-content p {
-    font-size: 18px;
-    max-width: 600px;
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1.6;
+    max-width: 500px;
+    min-height: 65px;
 }
 
+/* Стрелки переключения слайдов - тонкие красные шевроны */
 .hero-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
+    background: transparent;
     border: none;
-    padding: 20px 15px;
+    padding: 0;
     cursor: pointer;
-  
+    z-index: 3;
+    width: 60px;
+    height: 60px;
+    transition: opacity 0.3s;
+    opacity: 0.6;
+}
+
+.hero-arrow:hover {
+    opacity: 1;
+}
+
+/* Рисуем стрелку через псевдоэлемент */
+.hero-arrow::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 30px;
+    border-top: 3px solid #e74c3c;
+    border-right: 3px solid #e74c3c;
+    transition: border-color 0.3s;
+}
+
+.hero-arrow:hover::before {
+    border-color: #ff5544;
+}
+
+/* Левая стрелка - поворачиваем на 225 градусов */
+.hero-arrow.left::before {
+    transform: translate(-30%, -50%) rotate(-135deg);
+}
+
+/* Правая стрелка - поворачиваем на 45 градусов */
+.hero-arrow.right::before {
+    transform: translate(-70%, -50%) rotate(45deg);
 }
 
 .hero-arrow.left {
-    left: 20px;
-    background: url('arrow_left_red_big.png');
+    left: 40px;
 }
 
 .hero-arrow.right {
-    right: 20px;
-    background: url('arrow_right_red_big.png');
+    right: 40px;
 }
 
-/* Section */
+/* Индикаторы слайдов внизу баннера */
+.slide-indicators {
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    z-index: 3;
+}
+
+.indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.indicator.active {
+    background: white;
+    transform: scale(1.3);
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.7);
+}
+
+/* Общие секции сайта */
 .section {
-    padding: 80px 50px;
+    padding: 100px 80px;
 }
 
 .section-title {
     text-align: center;
-    font-size: 32px;
-    margin-bottom: 10px;
+    font-size: 42px;
+    font-weight: 300;
+    margin-bottom: 20px;
     position: relative;
+    letter-spacing: 1px;
 }
 
 .section-title::before {
     content: '';
     position: absolute;
-    top: -20px;
+    top: -30px;
     left: 50%;
     transform: translateX(-50%);
     width: 100%;
     height: 1px;
-    background: #ddd;
+    background: #e0e0e0;
 }
 
 .section-text {
     text-align: center;
-    max-width: 900px;
-    margin: 30px auto;
+    max-width: 1000px;
+    margin: 40px auto;
     color: #666;
-    line-height: 1.8;
+    line-height: 1.9;
+    font-size: 16px;
+    font-weight: 300;
 }
 
 /* Hexagons */
@@ -226,11 +421,21 @@ nav a:hover {
     font-size: 14px;
 }
 
-/* Banner */
+/* Параллакс баннер между секциями - фон не двигается при скролле */
 .banner {
     height: 400px;
-    background: url('banner.jpg') center/cover fixed;
+    background: url('img/paralax_2.jpg') center/cover fixed;
     position: relative;
+}
+
+.banner::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
 }
 
 /* Advantages */
@@ -326,31 +531,63 @@ nav a:hover {
     background: #c0392b;
 }
 
-/* Parallax */
+/* Параллакс секции - фон фиксирован, контент скроллится */
 .parallax {
-    min-height: 100vh;
-    background-image: url('paralax_1.png');
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
 }
 
-/* Contact Form */
+.parallax::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.parallax-1 {
+    background-image: url('img/paralax_1.png');
+}
+
+.parallax-2 {
+    background-image: url('img/paralax_3.jpg');
+}
+
+/* Секция с формой обратной связи */
 .contact-form-section {
-    background: url('form-bg.jpg') center/cover;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('img/paralax_2.jpg') center/cover;
     padding: 80px 50px;
     text-align: center;
     color: white;
+    position: relative;
 }
 
 .contact-form-section h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 42px;
+    font-weight: 300;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
 }
 
-.contact-form-section .section-title::before {
-    background: rgba(255, 255, 255, 0.3);
+.form-divider {
+    width: 120px;
+    height: 2px;
+    background: white;
+    margin: 30px auto;
 }
 
 .form-description {
-    margin: 20px 0 40px;
+    margin: 30px auto 50px;
+    max-width: 600px;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.6;
 }
 
 .contact-form {
@@ -395,7 +632,7 @@ nav a:hover {
     color: rgba(255, 255, 255, 0.8);
 }
 
-/* Clients */
+/* Сетка логотипов клиентов */
 .clients-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -404,15 +641,22 @@ nav a:hover {
 }
 
 .client-item {
-    background: #f0f0f0;
+    background: #f0f0f0 center/contain no-repeat;
     height: 100px;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
+    border: 1px solid #e0e0e0;
+    border-radius: 5px;
 }
 
 .client-item:hover {
     transform: scale(1.05);
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Скрытые элементы для кнопки "Показать все" */
+.client-item.hidden {
+    display: none;
 }
 
 .btn-show-all {
@@ -450,8 +694,15 @@ nav a:hover {
 .certificate-img {
     width: 120px;
     height: 150px;
-    background: #f0f0f0;
+    background: #f0f0f0 center/cover no-repeat;
     flex-shrink: 0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.certificate-img:hover {
+    transform: scale(1.05);
 }
 
 .certificate-text h3 {
@@ -464,57 +715,118 @@ nav a:hover {
     color: #666;
 }
 
-/* Footer */
+/* Брутальный минимализм - черный, простой, мощный */
 footer {
-    background: #555;
-    color: white;
-    padding: 50px;
+    background: #000;
+    color: #fff;
+    padding: 0;
+    border-top: 4px solid #e74c3c;
 }
 
 .footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 30px;
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 80px;
+    padding: 80px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.footer-column h4 {
+    font-size: 11px;
+    font-weight: 700;
+    margin-bottom: 30px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.5);
 }
 
 .footer-logo {
-    width: 150px;
-    height: 50px;
-    margin-bottom: auto;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 30px;
+}
+
+.footer-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    filter: brightness(1.2);
+}
+
+.footer-description {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 12px;
+    line-height: 1.8;
+    font-weight: 600;
+    letter-spacing: 1.5px;
 }
 
 .footer-nav {
     display: flex;
-    gap: 30px;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .footer-nav a {
-    color: white;
+    color: #fff;
     text-decoration: none;
     font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    transition: all 0.2s;
+    display: inline-block;
 }
 
-.footer-contact div {
-    margin: 10px 0;
+.footer-nav a:hover {
+    color: #e74c3c;
+    transform: translateX(5px);
 }
 
-.social-media {
-    text-align: center;
-    
+.footer-contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
-.social-icons {
-    width: 150px;
-    height: 50px;
-    margin: 10px auto;
+.contact-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 1px;
+    line-height: 1.8;
+}
+
+.footer-callback-btn {
+    width: 100%;
+    padding: 20px 40px;
+    background: #e74c3c;
+    border: none;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: 2px;
     cursor: pointer;
-    transition: transform 0.6s ease;
+    transition: all 0.2s;
+    font-family: 'Montserrat', sans-serif;
 }
-.social-icons:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2);
+
+.footer-callback-btn:hover {
+    background: #fff;
+    color: #000;
+}
+
+.footer-bottom {
+    padding: 30px 80px;
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.footer-bottom-left {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 11px;
+    letter-spacing: 2px;
+    font-weight: 700;
 }
 
 /* Mobile */
@@ -525,21 +837,37 @@ footer {
         gap: 15px;
     }
 
+    .header-left {
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+    }
+
     nav {
         flex-direction: column;
         gap: 10px;
     }
 
-    .contact-box {
+    .header-right {
+        text-align: center;
         font-size: 11px;
+    }
+
+    .hero-content {
+        right: 5%;
+        width: 90%;
+        max-width: 500px;
+        min-height: auto;
     }
 
     .hero-content h1 {
         font-size: 32px;
+        min-height: auto;
     }
 
     .hero-content p {
         font-size: 16px;
+        min-height: auto;
     }
 
     .section {
@@ -555,16 +883,284 @@ footer {
     }
 
     .footer-content {
-        flex-direction: column;
-        text-align: center;
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 50px 30px;
     }
 
-    .footer-nav {
+    .footer-stats {
+        justify-content: space-around;
+    }
+
+    .stat-number {
+        font-size: 24px;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+        padding: 25px 30px;
+    }
+
+    .footer-bottom-right {
         flex-direction: column;
         gap: 10px;
     }
 
-    .certificate-item {
+    .contact-item {
+        padding: 12px;
+    }
+
+    .newsletter-form {
         flex-direction: column;
     }
+}
+
+/* Модальное окно для обратного звонка */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    animation: fadeIn 0.3s;
+}
+
+.modal.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    animation: slideDown 0.3s;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 30px;
+    cursor: pointer;
+    color: #999;
+    transition: color 0.3s;
+}
+
+.modal-close:hover {
+    color: #e74c3c;
+}
+
+.modal-content h2 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.modal-content input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.modal-content input:focus {
+    outline: none;
+    border-color: #e74c3c;
+}
+
+/* Анимации при скролле - элементы появляются снизу вверх */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.animated {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Задержки для последовательного появления элементов */
+.animate-on-scroll:nth-child(1) {
+    transition-delay: 0.1s;
+}
+
+.animate-on-scroll:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.animate-on-scroll:nth-child(3) {
+    transition-delay: 0.3s;
+}
+
+.animate-on-scroll:nth-child(4) {
+    transition-delay: 0.4s;
+}
+
+.animate-on-scroll:nth-child(5) {
+    transition-delay: 0.5s;
+}
+
+.animate-on-scroll:nth-child(6) {
+    transition-delay: 0.6s;
+}
+
+/* Пасхалка в стиле DedSec - активируется секретной комбинацией */
+.dedsec-mode {
+    position: relative;
+}
+
+.dedsec-mode::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 255, 0, 0.03);
+    pointer-events: none;
+    z-index: 9998;
+    animation: scanline 8s linear infinite;
+}
+
+@keyframes scanline {
+    0% { background-position: 0 0; }
+    100% { background-position: 0 100%; }
+}
+
+/* Глитч эффект на заголовки */
+.glitch {
+    position: relative;
+    animation: glitch-anim 2s infinite;
+}
+
+@keyframes glitch-anim {
+    0% {
+        clip-path: inset(40% 0 61% 0);
+        transform: translate(0);
+    }
+    20% {
+        clip-path: inset(92% 0 1% 0);
+        transform: translate(-2px, 2px);
+    }
+    40% {
+        clip-path: inset(43% 0 1% 0);
+        transform: translate(-2px, -2px);
+    }
+    60% {
+        clip-path: inset(25% 0 58% 0);
+        transform: translate(2px, 2px);
+    }
+    80% {
+        clip-path: inset(54% 0 7% 0);
+        transform: translate(2px, -2px);
+    }
+    100% {
+        clip-path: inset(58% 0 43% 0);
+        transform: translate(0);
+    }
+}
+
+/* Хакерское сообщение */
+.dedsec-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #000;
+    border: 3px solid #ff0000;
+    padding: 40px 60px;
+    z-index: 9999;
+    font-family: 'Courier New', monospace;
+    color: #ff0000;
+    text-align: center;
+    box-shadow: 0 0 50px rgba(255, 0, 0, 0.5);
+    animation: blink 0.5s infinite;
+    display: none;
+}
+
+.dedsec-message.active {
+    display: block;
+}
+
+.dedsec-message h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-shadow: 0 0 10px #ff0000;
+}
+
+.dedsec-message p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 10px;
+    color: #00ff00;
+}
+
+.dedsec-message .ascii-art {
+    font-size: 24px;
+    line-height: 1.2;
+    margin: 20px 0;
+    white-space: pre;
+}
+
+@keyframes blink {
+    0%, 50%, 100% { opacity: 1; }
+    25%, 75% { opacity: 0.8; }
+}
+
+/* Мигающий курсор */
+.cursor {
+    display: inline-block;
+    width: 10px;
+    height: 20px;
+    background: #00ff00;
+    animation: cursor-blink 1s infinite;
+}
+
+@keyframes cursor-blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+/* Матричный дождь на фоне */
+.matrix-rain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9997;
+    display: none;
+}
+
+.matrix-rain.active {
+    display: block;
 }
