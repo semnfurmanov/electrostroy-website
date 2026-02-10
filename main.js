@@ -3,7 +3,7 @@ let currentSlide = 0;
 const slides = [
     {
         type: 'video',
-        video: 'https://github.com/semnfurmanov/electrostroy-website/releases/download/v1.0.0/default.hero',
+        video: 'ЭлектроСтройСервис.mp4',
         duration: 10000, // 10 секунд
         title: 'Электростройсервис',
         text: 'Надежный партнер в области электроснабжения. Полный цикл работ от проектирования до монтажа'
