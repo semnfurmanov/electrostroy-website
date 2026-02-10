@@ -3,4 +3,4 @@ node_modules/
 *.log
 .env
 video.mp4
-ЭлектроСтройСервис.mp4
+*.mp4
